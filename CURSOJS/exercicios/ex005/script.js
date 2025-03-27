@@ -35,7 +35,7 @@ function adicionar() {
         }
 
     } else {
-        window.alert('Valor invalido ou ja encontrado na lista.')
+        window.alert('[ERROR] Valor invalido ou ja encontrado na lista.')
         
     }
     num.value = '' // Limpa o campo de entrada
@@ -43,10 +43,11 @@ function adicionar() {
 }
 
 function finalizar() {
+    if (valores.length >= 2) {
     // Mostra o total de numeros cadastrados no array
-    res.innerHTML = `<br> Ao todo, temos ${valores.length} numeros cadastrados`
+    res.innerHTML = `<br> Ao todo, temos ${valores.length} numeros cadastrados.`
 
-    // Mostra i maior numero do array
+    // Mostra o maior valor do array
     let maior = valores[0]
     for (let i = 1; i < valores.length; i++) {
         if(valores[i] > maior) {
@@ -54,42 +55,31 @@ function finalizar() {
         }
     }
     res.innerHTML += `<br><br> O maior valor informado foi ${maior}.`
-}
 
-
-
-
-
-
-
-/* let num = document.querySelector('input#fnum')
-let lista = document.querySelector('select#flista')
-let res = document.querySelector('div#res')
-let valores = []
-
-num = Number(num)
-
-function isNumero(n) {
-    if (Number(n) >= 1 && Number(n) <= 100) {
-        return true
-    } else {
-        return false
+    // Mostra o menor valor do array
+    let menor = valores[0]
+    for (let i = 1; i < valores.length; i++) {
+        if (valores[i] < menor) {
+            menor = valores[i]
+        }
     }
-}
+    res.innerHTML += `<br><br> O menor valor informado foi ${menor}.`
 
-function inLista(n, l) {
-    if (l.indexOf(Number(n)) != -1) {
-        return true
-    } else {
-        return false
+    // Soma todos os valores dentro do array
+    let soma = 0
+    for (let i = 0; i < valores.length; i++) {
+        soma += valores[i]
     }
-}
+    res.innerHTML += `<br><br> Somando todos os valores, temos ${soma}.`
 
-function adicionar() {
-    
-    if (isNumero(num.value) && !inLista(num.value, valores)) {
-        window.alert('Tudo ok!')
-    } else {
-        window.alert('[ERROR] Valor invalido ou já está na lista!')
+    // Pegando media dos valores do array
+    let somaMedia = 0
+    for (let i = 0; i < valores.length; i++) {
+        somaMedia += valores[i]
     }
-} */
+      let media = somaMedia / valores.length
+    res.innerHTML += `<br><br> A media dos valores digitados e ${media}.`
+} else {
+    window.alert('[ERROR] Adicione dois ou mais valores antes de finalisar!')
+}
+}
