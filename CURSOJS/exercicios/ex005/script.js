@@ -34,6 +34,8 @@ function adicionar() {
             lista.appendChild(item)
         }
 
+        res.innerHTML = ''
+
     } else {
         window.alert('[ERROR] Valor invalido ou ja encontrado na lista.')
         
